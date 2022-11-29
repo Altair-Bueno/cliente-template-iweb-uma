@@ -15,6 +15,18 @@
 
 # Uso
 
+## Despliegue de la aplicación
+
+La aplicación ha sido diseñada para ser desplegada en fly.io. Para ello, será
+necesario tener instalada el CLI `flyctl`
+
+```sh
+# Cargar las variables de entorno
+cat .env | flyctl secrets import
+# Desplegar la aplicación
+flyctl deploy
+```
+
 ## Ejecución de desarrollo
 
 ### Requisitos
