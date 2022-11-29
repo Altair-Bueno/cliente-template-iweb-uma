@@ -1,40 +1,25 @@
-<script lang="ts">
-  import type { Map } from "leaflet";
+<script>
+  import L from "leaflet";
+  import "leaflet/dist/leaflet.css";
 
-  function setMap(mapElement: HTMLElement) {
-    (async () => {
-      const L = await import("leaflet");
-      const { addHouseToMap, addGasStationsToMap } = await import(
-        "../utils/map-utils"
-      );
+  // {coordinates: [lat,long], text, open?}
+  export let points = [];
+  export let origin = [0, 0];
 
-      var map: Map = L.map(mapElement).setView(
-        [coordinates.latitude, coordinates.longitude],
-        13
-      );
-      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
-        attribution:
-          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      }).addTo(map);
+  function setupMap(htmlElement) {
+    const map = L.map(htmlElement).setView(origin, 13);
 
-      addHouseToMap(L, coordinates, map);
-      addGasStationsToMap(L, gasStations, map);
-    })();
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 19,
+    }).addTo(map);
+
+    points.forEach(({ coordinates, text, open }) => {
+      const marker = L.marker(coordinates).addTo(map).bindPopup(text);
+      if (open) marker.openPopup();
+    });
   }
-
-  /**
-   * param: coordinates: Coordinates
-   *
-   * Coordinates of the house
-   */
-  export let coordinates: Coordinates;
-  /**
-   * param: gasStations: EESSPrecio[]
-   *
-   * Array of gas stations to be displayed as markers
-   */
-  export let gasStations: EESSPrecio[];
 </script>
 
-<figure class="map" use:setMap />
+<figure class="map" use:setupMap />

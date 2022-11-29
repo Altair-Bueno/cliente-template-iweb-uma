@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { DefaultApi, Configuration } from "../api";
+import Map from "../components/Map.svelte";
 const api = new DefaultApi(
   new Configuration({ basePath: import.meta.env.BACKEND_URL })
 );
@@ -9,6 +10,17 @@ const all = await api.exampleExampleGet();
 
 <Layout title="Welcome to Astro.">
   {all}
+  <div class="container">
+    <Map
+      client:only
+      origin={[51.5, -0.09]}
+      points={[
+        { coordinates: [51.5, -0.09], text: "hello world1" },
+        { coordinates: [51.5, -0.03], text: "hello world2" },
+        { coordinates: [51.5, -0.04], text: "hello world3", open: true },
+      ]}
+    />
+  </div>
   <div class="accordion" id="accordionExample">
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingOne">
