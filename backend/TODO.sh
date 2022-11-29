@@ -1,3 +1,6 @@
+# Script para completar el despliegue en fly.io
+# Disponible en https://cliente-iweb-uma.fly.dev
+
 # Cargar los secretos en fly
 cat .env | flyctl secrets import
 # Desplegar
