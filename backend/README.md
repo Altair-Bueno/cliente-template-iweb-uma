@@ -6,11 +6,10 @@
 - Las variables de entorno deberían estar ya configuradas, tanto para el
   `docker-compose` como para el entorno de desarrollo. En el caso del entorno de
   desarrollo, será necesario proporcionar una base de datos MongoDB
-- El fichero `runme.sh` es un script para `zsh` utilizado para generar algunos
-  ficheros antes de empezar el proyecto. No se recomienda ejecutar
-- La carpeta `iweb` incluye un script de python para cargar los datos en la
-  instancia de mongo. Siga las instrucciones del fichero `iweb/README.md` sobre
-  como cargar dichos datos
+- La entrega contiene un fichero `.env` con las variables de entorno necesarias
+  para desplegar la aplicación. (dirección URL de la base de datos, api keys,
+  etc)
+- El servicio esta disponible en la url https://cliente-iweb-uma.fly.dev
 
 ---
 
@@ -45,23 +44,12 @@ uvicorn --reload --port 8000 --host 127.0.0.1 src:app
 ```sh
 # Compilar el contenedor
 docker build -t fastapi-app .
-# Inicializar el contenedor
+# Inicializar el contenedor. Añadir todas las variables de entorno necesarias
 docker run -p 8000:8080 \
     -e mongo_url=<VALOR> \
     -e mongo_collection=<VALOR> \
     -e mongo_database=<VALOR> \
     fastapi-app
-```
-
-## Ejecución mediante Docker compose
-
-```sh
-# Iniciar el servicio completo
-# Disponible en http://localhost:8000
-# Mongo en mongodb://iweb:strongpassword@localhost:27017
-docker compose up -d
-# Detener el servicio
-docker compose down
 ```
 
 # Configuración
