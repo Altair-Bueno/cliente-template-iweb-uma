@@ -22,4 +22,8 @@
   }
 </script>
 
-<figure class="map" use:setupMap />
+<figure
+  use:setupMap
+  class={`map ${$$props.class || ""}`}
+  style={$$props.style}
+/>
