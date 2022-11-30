@@ -3,7 +3,7 @@ src/settings.py
 
 @author Altair Bueno <altair.bueno@uma.es>
 '''
-from pydantic import BaseModel, BaseSettings
+from pydantic import BaseModel, BaseSettings, HttpUrl
 
 
 class MongoConfig(BaseModel):
@@ -14,8 +14,16 @@ class MongoConfig(BaseModel):
     class Config:
         frozen = True
 
+class LocationIQConfig(BaseModel):
+    apikey: str
+    baseurl: HttpUrl
+
+    class Config:
+        frozen = True
+        
 class Settings(BaseSettings):
     mongo: MongoConfig
+    locationiq: LocationIQConfig
 
     class Config:
         env_file = ".env"

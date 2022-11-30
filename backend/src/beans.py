@@ -7,6 +7,7 @@ from fastapi import Depends
 from functools import lru_cache
 from motor.motor_asyncio import AsyncIOMotorClient
 
+from .service import LocationIQService
 from .settings import Settings
 
 
@@ -34,3 +35,6 @@ def get_collection(
 ):
     return database[settings.mongo.collection]
 
+@lru_cache
+def get_locationiq_service(settings: Settings = Depends(get_settings)):
+    return LocationIQService(settings.locationiq)

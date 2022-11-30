@@ -6,6 +6,7 @@ src/model/__init__.py
 
 from bson.objectid import ObjectId
 from pydantic import BaseModel
+from .locationIQ import SearchLocationIQ
 
 class PyObjectId(ObjectId):
     """Wrapper around `pymongo`'s `ObjectId` class for Pydantic"""
