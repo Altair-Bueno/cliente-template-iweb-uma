@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { DefaultApi, Configuration } from "../api";
 import Map from "../components/Map.svelte";
+import ShareOnTwitter from "../components/ShareOnTwitter.astro";
 const api = new DefaultApi(
   new Configuration({ basePath: import.meta.env.BACKEND_URL })
 );
@@ -16,6 +17,7 @@ const points = [
 
 <Layout title="Welcome to Astro.">
   {all}
+  <ShareOnTwitter />
   <div class="container">
     <Map client:only origin={[51.5, -0.09]} points={points} />
   </div>
