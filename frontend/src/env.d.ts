@@ -3,6 +3,6 @@
 
 interface ImportMetaEnv {
   readonly BACKEND_URL: string;
-  readonly CLOUDINARY_CLOUD_NAME: string;
-  readonly CLOUDINARY_UPLOAD_PRESET: string;
+  readonly PUBLIC_CLOUDINARY_CLOUD_NAME: string;
+  readonly PUBLIC_CLOUDINARY_UPLOAD_PRESET: string;
 }

@@ -31,8 +31,8 @@ export interface CloudinaryResponse {
 }
 
 export async function uploadImageFile(file: File): Promise<CloudinaryResponse> {
-  const uploadPreset = import.meta.env.CLOUDINARY_UPLOAD_PRESET;
-  const cloudName = import.meta.env.CLOUDINARY_CLOUD_NAME;
+  const uploadPreset = import.meta.env.PUBLIC_CLOUDINARY_UPLOAD_PRESET;
+  const cloudName = import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME;
   const formData = new FormData();
   formData.append("upload_preset", uploadPreset);
   formData.append("file", file);
