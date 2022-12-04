@@ -2,6 +2,14 @@
 
 - El servicio se encuentra desplegado en
   https://cliente-template-iweb-uma.vercel.app/
+- Se proporcionan las siguientes credencias de testing para la aplicación:
+
+```yml
+paypal:
+  client:
+    email: sb-5qp7q22405408@personal.example.com
+    password: 2o}yF$ct
+```
 
 ---
 

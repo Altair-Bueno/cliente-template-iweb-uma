@@ -24,15 +24,15 @@
     | ((data: Record<string, any>, actions: OnCancelledActions) => void) =
     undefined;
 
-  let paypalButtonContainer: HTMLElement;
-
-  loadScript({ "client-id": paypalClientId }).then((paypal) => {
-    if (paypal && paypal.Buttons) {
-      paypal
-        .Buttons({ createOrder, onApprove, onError, onCancel })
-        .render(paypalButtonContainer);
-    }
-  });
+  function paypal(paypalButtonContainer: HTMLElement, paypalClientId: string) {
+    loadScript({ "client-id": paypalClientId }).then((paypal) => {
+      if (paypal && paypal.Buttons) {
+        paypal
+          .Buttons({ createOrder, onApprove, onError, onCancel })
+          .render(paypalButtonContainer);
+      }
+    });
+  }
 </script>
 
-<div id="paypal-button-container" bind:this={paypalButtonContainer} />
+<div id="paypal-button-container" use:paypal={paypalClientId} />
