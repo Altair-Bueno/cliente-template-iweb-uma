@@ -1,0 +1,21 @@
+---
+import { object, string } from "yup";
+
+const scheme = object({
+  name: string().optional(),
+  age: string().optional(),
+});
+const rawFormData = Array.from(Astro.url.searchParams.entries())
+  .filter((x) => x[1])
+  .reduce((acc, [x, y]) => {
+    acc[x] = y;
+    return acc;
+  }, {} as Record<string, any>);
+const formData = scheme.cast(rawFormData);
+---
+
+<form>
+  <input value={formData.name} name="name" />
+  <input value={formData.age} name="age" type="number" />
+  <input type="submit" />
+</form>
