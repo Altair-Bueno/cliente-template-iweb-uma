@@ -10,6 +10,7 @@ class LocationIQService:
         self.config = config
 
     async def search(self, query)->List[SearchLocationIQ]:
+        '''https://locationiq.com/docs#search-forward-geocoding'''
         params = {
             "key" : self.config.apikey,
             "format": "json",
