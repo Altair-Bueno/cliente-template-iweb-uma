@@ -5,3 +5,4 @@ src/service/__init__.py
 '''
 
 from .locationIQ import LocationIQService
+from .paypal import PaypalService

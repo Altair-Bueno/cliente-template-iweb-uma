@@ -14,6 +14,13 @@ class MongoConfig(BaseModel):
     class Config:
         frozen = True
 
+class PaypalConfig(BaseModel):
+    url: HttpUrl
+    clientid: str
+    secret: str
+    class Config:
+        frozen = True
+
 class LocationIQConfig(BaseModel):
     apikey: str
     baseurl: HttpUrl
@@ -24,6 +31,7 @@ class LocationIQConfig(BaseModel):
 class Settings(BaseSettings):
     mongo: MongoConfig
     locationiq: LocationIQConfig
+    paypal: PaypalConfig
 
     class Config:
         env_file = ".env"

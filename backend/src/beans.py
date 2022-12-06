@@ -7,7 +7,7 @@ from fastapi import Depends
 from functools import lru_cache
 from motor.motor_asyncio import AsyncIOMotorClient
 
-from .service import LocationIQService
+from .service import *
 from .settings import Settings
 
 
@@ -36,5 +36,18 @@ def get_collection(
     return database[settings.mongo.collection]
 
 @lru_cache
+def get_paypal_service(settings: Settings = Depends(get_settings)):
+    return PaypalService(settings.paypal)
+
+@lru_cache
 def get_locationiq_service(settings: Settings = Depends(get_settings)):
     return LocationIQService(settings.locationiq)
+
+"""
+@lru_cache
+def get_service(
+    paypal: PaypalService = Depends(get_paypal_service),
+    locationiq: LocationIQService = Depends(get_locationiq_service)
+):
+    return Service(paypal=paypal,locationiq=locationiq)
+"""
