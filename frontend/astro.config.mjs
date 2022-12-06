@@ -7,8 +7,11 @@ import svelte from "@astrojs/svelte";
 import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
+import react from "@astrojs/react";
+
+// https://astro.build/config
 export default defineConfig({
-  integrations: [svelte()],
+  integrations: [svelte(), react()],
   output: "server",
   adapter: vercel()
 });

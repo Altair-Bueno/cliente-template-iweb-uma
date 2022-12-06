@@ -1,21 +1,35 @@
 ---
+// https://react-jsonschema-form.readthedocs.io/en/latest/
 import { object, string } from "yup";
+import Form from "@rjsf/core";
+import yupToJsonSchema from "@sodaru/yup-to-json-schema";
+import validator from "@rjsf/validator-ajv8";
+import Layout from "../../layouts/Layout.astro";
 
-const scheme = object({
+const yupScheme = object({
   name: string().optional(),
   age: string().optional(),
 });
+const jsonScheme = yupToJsonSchema(yupScheme);
+
 const rawFormData = Array.from(Astro.url.searchParams.entries())
   .filter((x) => x[1])
   .reduce((acc, [x, y]) => {
     acc[x] = y;
     return acc;
   }, {} as Record<string, any>);
-const formData = scheme.cast(rawFormData);
+
+const formData = await yupScheme.validate(rawFormData);
 ---
 
-<form>
-  <input value={formData.name} name="name" />
-  <input value={formData.age} name="age" type="number" />
-  <input type="submit" />
-</form>
+<Layout title="Form example">
+  <div class="container">
+    <Form
+      schema={jsonScheme}
+      validator={validator}
+      formData={formData}
+      idPrefix={""}
+      idSeparator={""}
+    />
+  </div>
+</Layout>
