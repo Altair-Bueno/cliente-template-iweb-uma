@@ -1,7 +1,9 @@
-import { JSONSchema7 as Schema } from "json-schema";
+import type { JSONSchema7 as Schema } from "json-schema";
 import type Converter from "./Converter";
-import { merge } from "lodash";
+import lodash from "lodash";
 import commonMetadata from "./commonMetadata";
+
+const { merge } = lodash;
 
 function metaHasDescription(meta: unknown): meta is { description: string } {
   return typeof meta === "object" && meta != null && "description" in meta;

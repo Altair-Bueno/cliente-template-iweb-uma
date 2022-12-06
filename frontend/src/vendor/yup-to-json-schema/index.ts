@@ -3,12 +3,14 @@ import type { JSONSchema7 } from "json-schema";
 import TypeMap, { Map } from "./TypeMap";
 import stringConverter from "./converters/string";
 import mixedConverter from "./converters/mixed";
-import { merge } from "lodash";
+import lodash from "lodash";
 import numberConverter from "./converters/number";
 import booleanConverter from "./converters/boolean";
 import dateConverter from "./converters/date";
 import arrayConverter from "./converters/array";
 import objectConverter from "./converters/object";
+
+const { merge } = lodash;
 
 const yupToJsonSchema = (yupSchema: AnySchema, types?: Map): JSONSchema7 => {
   let _types: Map = {
