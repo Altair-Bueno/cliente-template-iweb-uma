@@ -1,4 +1,4 @@
-import yupToJsonSchema from "@sodaru/yup-to-json-schema";
+import yupToJsonSchema from "../vendor/yup-to-json-schema";
 import Form from "@rjsf/core";
 import validator from "@rjsf/validator-ajv8";
 
