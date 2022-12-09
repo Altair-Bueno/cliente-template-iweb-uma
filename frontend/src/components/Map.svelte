@@ -5,6 +5,8 @@
   // {coordinates: [lat,long], text, open?}
   export let points = [];
   export let origin = [0, 0];
+  export let height = "40vh";
+  export let width = undefined;
 
   function setupMap(htmlElement) {
     const map = L.map(htmlElement).setView(origin, 13);
@@ -24,6 +26,8 @@
 
 <figure
   use:setupMap
-  class={`map ${$$props.class || ""}`}
+  style:height
+  style:width
+  class={$$props.class}
   style={$$props.style}
 />
