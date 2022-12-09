@@ -1,18 +1,3 @@
-# Anotaciones sobre la entrega
-
-- La entrega contiene ficheros que pueden ser incompatibles con su máquina
-  (concretamente `__pycache__` y `.venv`). Se recomienda eliminarlos antes de
-  ejecutar el código, o bien utilizar el contenedor de Docker que se proporciona
-- Las variables de entorno deberían estar ya configuradas, tanto para el
-  `docker-compose` como para el entorno de desarrollo. En el caso del entorno de
-  desarrollo, será necesario proporcionar una base de datos MongoDB
-- La entrega contiene un fichero `.env` con las variables de entorno necesarias
-  para desplegar la aplicación. (dirección URL de la base de datos, api keys,
-  etc)
-- El servicio esta disponible en la url https://cliente-iweb-uma.fly.dev
-
----
-
 # Uso
 
 ## Despliegue de la aplicación
