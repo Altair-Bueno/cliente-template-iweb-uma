@@ -9,7 +9,7 @@ export interface Props {
 }
 
 const { title } = Astro.props;
-const isLoggedIn = Astro.cookies.has(cookies.auth0);
+const isLoggedIn = Astro.cookies.has(cookies.refreshToken);
 
 const home = "Home";
 const pages = [{ url: "/home", title: "Home" }];

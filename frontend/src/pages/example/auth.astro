@@ -1,6 +1,10 @@
 ---
 import { Configuration, DefaultApi } from "../../api";
-import { getAccessToken } from "../../lib/auth0";
+import { getAccessToken, isLoggedIn } from "../../lib/auth0";
+
+if (!isLoggedIn(Astro)) {
+  return Astro.redirect("/");
+}
 
 const api = new DefaultApi(
   new Configuration({

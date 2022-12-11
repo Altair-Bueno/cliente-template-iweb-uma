@@ -1,5 +1,6 @@
 import type { APIContext } from "astro";
 import cookies from "../../cookies";
+import { setCookies } from "../../lib/auth0";
 
 // https://auth0.com/docs/get-started/authentication-and-authorization-flow/call-your-api-using-the-authorization-code-flow
 export async function get(context: APIContext) {
@@ -24,10 +25,7 @@ export async function get(context: APIContext) {
       body: payload.toString(),
     }
   ).then((x) => x.json());
-  response.created_at = new Date();
-  context.cookies.set(cookies.auth0, JSON.stringify(response), {
-    path: "/",
-  });
+  setCookies(context, response);
 
   return context.redirect("/");
 }

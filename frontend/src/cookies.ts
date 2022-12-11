@@ -1,3 +1,4 @@
 export default {
-  auth0: "auth0",
+  refreshToken: "refreshToken",
+  accessToken: "accessToken",
 };
