@@ -59,21 +59,21 @@ const pages = [{ url: "/home", title: "Home" }];
               ))
             }
           </ul>
+          <div class="ms-auto">
+            {
+              isLoggedIn ? (
+                <LogoutButton action="/auth/logout" />
+              ) : (
+                <LoginButton
+                  audience={import.meta.env.PUBLIC_AUTH0_AUDIENCE}
+                  baseUrl={import.meta.env.PUBLIC_AUTH0_BASEURL}
+                  clientId={import.meta.env.PUBLIC_AUTH0_CLIENTID}
+                  callbackUrl={`${Astro.url.origin}/auth/callback`}
+                />
+              )
+            }
+          </div>
         </div>
-      </div>
-      <div class="mx-2">
-        {
-          isLoggedIn ? (
-            <LogoutButton action="/auth/logout" />
-          ) : (
-            <LoginButton
-              audience={import.meta.env.PUBLIC_AUTH0_AUDIENCE}
-              baseUrl={import.meta.env.PUBLIC_AUTH0_BASEURL}
-              clientId={import.meta.env.PUBLIC_AUTH0_CLIENTID}
-              callbackUrl={`${Astro.url.origin}/auth/callback`}
-            />
-          )
-        }
       </div>
     </nav>
     <div class="container">
