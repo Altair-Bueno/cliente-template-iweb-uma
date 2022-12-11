@@ -31,7 +31,9 @@ class LocationIQConfig(BaseModel):
 class AuthSettings(BaseModel):
     baseurl: HttpUrl
     audience: str
-        
+    class Config:
+        frozen = True
+      
 class Settings(BaseSettings):
     mongo: MongoConfig
     locationiq: LocationIQConfig
