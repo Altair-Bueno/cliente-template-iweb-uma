@@ -1,11 +1,15 @@
 ---
 import "../styles/bootstrap.scss";
+import cookies from "../cookies";
+import LogoutButton from "../components/LogoutButton.astro";
+import LoginButton from "../components/LoginButton.astro";
 
 export interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
+const isLoggedIn = Astro.cookies.has(cookies.accesToken);
 
 const home = "Home";
 const pages = [{ url: "/home", title: "Home" }];
@@ -57,8 +61,22 @@ const pages = [{ url: "/home", title: "Home" }];
           </ul>
         </div>
       </div>
+      <div class="mx-2">
+        {
+          isLoggedIn ? (
+            <LogoutButton action="/auth/logout" />
+          ) : (
+            <LoginButton
+              baseUrl={import.meta.env.PUBLIC_AUTH0_BASEURL}
+              clientId={import.meta.env.PUBLIC_AUTH0_CLIENTID}
+              callbackUrl={`${Astro.url.origin}/auth/callback`}
+            />
+          )
+        }
+      </div>
     </nav>
-
-    <slot />
+    <div class="container">
+      <slot />
+    </div>
   </body>
 </html>
