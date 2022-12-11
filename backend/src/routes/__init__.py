@@ -4,6 +4,8 @@ src/routes/__init__.py
 @author Altair Bueno <altair.bueno@uma.es>
 '''
 from fastapi import APIRouter, Depends
+
+from ..auth import Authentication
 from ..beans import get_collection, get_locationiq_service
 from ..service import LocationIQService
 
@@ -16,3 +18,8 @@ async def example(collection=Depends(get_collection)):
 @BaseRouter.get("/geocoding")
 async def geocoding(query: str,service:LocationIQService=Depends(get_locationiq_service)):
     return await service.search(query)
+
+@BaseRouter.get("/requires_auth")
+async def requires_auth(auth=Depends(Authentication)):
+    print(auth)
+    return "Hello world"

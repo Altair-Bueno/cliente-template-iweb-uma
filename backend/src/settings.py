@@ -27,11 +27,16 @@ class LocationIQConfig(BaseModel):
 
     class Config:
         frozen = True
+
+class AuthSettings(BaseModel):
+    baseurl: HttpUrl
+    audience: str
         
 class Settings(BaseSettings):
     mongo: MongoConfig
     locationiq: LocationIQConfig
     paypal: PaypalConfig
+    auth: AuthSettings
 
     class Config:
         env_file = ".env"
