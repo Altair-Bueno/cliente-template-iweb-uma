@@ -35,3 +35,7 @@ La aplicación admite las siguientes opciones de configuración mediante fichero
 | `BACKEND_URL`              | URL del servidor REST       |
 | `CLOUDINARY_CLOUD_NAME`    | Cloud name de Cloudinary    |
 | `CLOUDINARY_UPLOAD_PRESET` | Upload preset de Cloudinary |
+| `PUBLIC_PAYPAL_CLIENTID`   | Client ID de Paypal         |
+| `PUBLIC_AUTH0_CLIENTID`    | Client ID de Auth0          |
+| `PUBLIC_AUTH0_BASEURL`     | Base URL del dominio Auth0  |
+| `PUBLIC_AUTH0_AUDIENCE`    | Audiencia del dominio Auth0 |

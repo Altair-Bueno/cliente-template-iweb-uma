@@ -10,6 +10,7 @@ export async function get(context: APIContext) {
     redirect_uri: context.url.origin,
     client_id: import.meta.env.PUBLIC_AUTH0_CLIENTID,
     client_secret: import.meta.env.AUTH0_CLIENTSECRET,
+    audience: import.meta.env.PUBLIC_AUTH0_AUDIENCE,
     code,
   });
 
@@ -23,11 +24,8 @@ export async function get(context: APIContext) {
       body: payload.toString(),
     }
   ).then((x) => x.json());
-
-  context.cookies.set(cookies.accesToken, response.access_token, {
-    path: "/",
-  });
-  context.cookies.set(cookies.refreshToken, response.refresh_token, {
+  response.created_at = new Date();
+  context.cookies.set(cookies.auth0, JSON.stringify(response), {
     path: "/",
   });
 

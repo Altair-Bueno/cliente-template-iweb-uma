@@ -2,14 +2,13 @@ import type { APIContext } from "astro";
 import cookies from "../../cookies";
 
 export async function post(context: APIContext) {
-  context.cookies.delete(cookies.accesToken, { path: "/" });
-  context.cookies.delete(cookies.refreshToken, { path: "/" });
+  context.cookies.delete(cookies.auth0, { path: "/" });
 
   // https://auth0.com/docs/api/authentication#logout
-  const payload = new URLSearchParams();
-  payload.append("client_id", import.meta.env.PUBLIC_AUTH0_CLIENTID);
-  payload.append("returnTo", context.url.origin);
-
+  const payload = new URLSearchParams({
+    client_id: import.meta.env.PUBLIC_AUTH0_CLIENTID,
+    returnTo: context.url.origin,
+  });
   return context.redirect(
     `${import.meta.env.PUBLIC_AUTH0_BASEURL}/v2/logout?${payload}`
   );

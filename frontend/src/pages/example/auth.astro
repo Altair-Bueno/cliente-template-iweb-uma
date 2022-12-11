@@ -1,0 +1,14 @@
+---
+import { Configuration, DefaultApi } from "../../api";
+import { getAccessToken } from "../../lib/auth0";
+
+const api = new DefaultApi(
+  new Configuration({
+    basePath: import.meta.env.BACKEND_URL,
+    accessToken: () => getAccessToken(Astro),
+  })
+);
+const model = await api.requiresAuthRequiresAuthGet();
+---
+
+<div>{model}</div>

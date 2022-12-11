@@ -9,7 +9,7 @@ export interface Props {
 }
 
 const { title } = Astro.props;
-const isLoggedIn = Astro.cookies.has(cookies.accesToken);
+const isLoggedIn = Astro.cookies.has(cookies.auth0);
 
 const home = "Home";
 const pages = [{ url: "/home", title: "Home" }];
@@ -67,6 +67,7 @@ const pages = [{ url: "/home", title: "Home" }];
             <LogoutButton action="/auth/logout" />
           ) : (
             <LoginButton
+              audience={import.meta.env.PUBLIC_AUTH0_AUDIENCE}
               baseUrl={import.meta.env.PUBLIC_AUTH0_BASEURL}
               clientId={import.meta.env.PUBLIC_AUTH0_CLIENTID}
               callbackUrl={`${Astro.url.origin}/auth/callback`}

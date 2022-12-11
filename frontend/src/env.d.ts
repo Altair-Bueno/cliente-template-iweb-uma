@@ -12,4 +12,5 @@ interface ImportMetaEnv {
 
   readonly PUBLIC_AUTH0_CLIENTID: string;
   readonly PUBLIC_AUTH0_BASEURL: string;
+  readonly PUBLIC_AUTH0_AUDIENCE: string;
 }
