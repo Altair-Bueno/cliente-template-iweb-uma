@@ -1,10 +1,10 @@
 import type { APIContext } from "astro";
 import cookies from "../../cookies";
 
+// https://auth0.com/docs/get-started/authentication-and-authorization-flow/call-your-api-using-the-authorization-code-flow
 export async function get(context: APIContext) {
   const code = context.url.searchParams.get("code") as string;
 
-  // https://auth0.com/docs/api/authentication#get-token
   const payload = new URLSearchParams({
     grant_type: "authorization_code",
     redirect_uri: context.url.origin,
