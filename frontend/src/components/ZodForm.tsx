@@ -1,6 +1,6 @@
 import Form from "@rjsf/core";
 import validator from "@rjsf/validator-ajv8";
-import zodToJsonSchema from "zod-to-json-schema";
+import { zodToJsonSchema } from "zod-to-json-schema";
 
 interface FormProps {
   formData: any;
