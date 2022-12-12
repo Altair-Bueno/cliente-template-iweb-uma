@@ -11,11 +11,11 @@ class OrdersService:
     def __init__(self, paypalService: PaypalService):
         self.paypalService = paypalService
 
-    async def new(self, payload: CreateOrder):
+    async def new(self, payload: CreateOrder) -> PaypalCreateOrderRequestBody:
         return PaypalCreateOrderRequestBody(
             purchase_units=[PaypalPurchaseUnit(amount=PaypalAmount(value=10), invoice_id="test")]
         )
 
-    async def capture(self,orderId: str, payload: CaptureOrder):
+    async def capture(self,orderId: str, payload: CaptureOrder) -> dict[str, Any]:
         capture = await self.paypalService.capture_order(orderId)
         return capture

@@ -2,9 +2,7 @@ from typing import Any, List
 from fastapi import Depends
 from fastapi.security import HTTPBearer
 from pydantic import BaseModel
-from jose.utils import base64url_decode
 from jose.jwt import decode
-from json import loads
 
 from ..settings import Settings
 from ..beans import get_settings, get_public_key
