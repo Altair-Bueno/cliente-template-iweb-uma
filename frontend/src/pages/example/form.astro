@@ -1,12 +1,13 @@
 ---
 // https://react-jsonschema-form.readthedocs.io/en/latest/
-import { object, string } from "yup";
-import { YupForm } from "../../components/YupForm";
+import { z } from "zod";
+import { ZodForm } from "../../components/ZodForm";
 import Layout from "../../layouts/Layout.astro";
 
-const yupScheme = object({
-  name: string().optional(),
-  age: string().optional(),
+const scheme = z.object({
+  name: z.coerce.string().optional(),
+  date: z.coerce.date().optional(),
+  age: z.coerce.number().default(0),
 });
 const rawFormData = Array.from(Astro.url.searchParams.entries())
   .filter((x) => x[1])
@@ -15,11 +16,11 @@ const rawFormData = Array.from(Astro.url.searchParams.entries())
     return acc;
   }, {} as Record<string, any>);
 
-const formData = await yupScheme.validate(rawFormData);
+const formData = scheme.parse(rawFormData);
 ---
 
 <Layout title="Form example">
   <div class="container">
-    <YupForm scheme={yupScheme} formData={formData} />
+    <ZodForm scheme={scheme} formData={formData} name="Sample form" />
   </div>
 </Layout>
