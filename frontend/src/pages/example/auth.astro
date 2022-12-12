@@ -1,5 +1,6 @@
 ---
 import { Configuration, DefaultApi } from "../../api";
+import Layout from "../../layouts/Layout.astro";
 import { getAccessToken, isLoggedIn } from "../../lib/auth0";
 
 if (!isLoggedIn(Astro)) {
@@ -15,4 +16,6 @@ const api = new DefaultApi(
 const model = await api.requiresAuthRequiresAuthGet();
 ---
 
-<div>{model}</div>
+<Layout title="Authenticated">
+  <div>{model}</div>
+</Layout>

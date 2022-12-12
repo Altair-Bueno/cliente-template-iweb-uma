@@ -1,5 +1,11 @@
 ---
 import Checkout from "../../components/Checkout.svelte";
+import Layout from "../../layouts/Layout.astro";
 ---
 
-<Checkout client:load paypalClientId={import.meta.env.PUBLIC_PAYPAL_CLIENTID} />
+<Layout title="Paypal">
+  <Checkout
+    client:only
+    paypalClientId={import.meta.env.PUBLIC_PAYPAL_CLIENTID}
+  />
+</Layout>
