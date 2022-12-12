@@ -8,7 +8,7 @@ interface FormProps {
   name: string;
 }
 
-export function ZodForm({ formData, scheme, name }: FormProps) {
+export default function ZodForm({ formData, scheme, name }: FormProps) {
   const jsonScheme = zodToJsonSchema(scheme, name);
   return (
     <Form
