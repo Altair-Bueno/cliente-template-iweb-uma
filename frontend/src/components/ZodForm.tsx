@@ -1,5 +1,5 @@
-import Form from "@rjsf/core";
-import validator from "@rjsf/validator-ajv8";
+//import Form from "@rjsf/core";
+//import validator from "@rjsf/validator-ajv8";
 import { zodToJsonSchema } from "zod-to-json-schema";
 
 interface FormProps {
@@ -10,6 +10,7 @@ interface FormProps {
 
 export default function ZodForm({ formData, scheme, name }: FormProps) {
   const jsonScheme = zodToJsonSchema(scheme, name);
+  return <div>Hello world</div>;
   return (
     <Form
       schema={jsonScheme}
