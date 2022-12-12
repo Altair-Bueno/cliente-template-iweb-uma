@@ -8,6 +8,7 @@ from fastapi import APIRouter, Depends
 from ..auth import Authentication, Claims
 from ..beans import get_collection, get_locationiq_service
 from ..service import LocationIQService
+from .orders import ordersRouter
 
 BaseRouter = APIRouter()
 
@@ -23,3 +24,5 @@ async def geocoding(query: str,service:LocationIQService=Depends(get_locationiq_
 async def requires_auth(auth: Claims=Depends(Authentication)):
     print(auth.json())
     return "Hello world"
+
+BaseRouter.include_router(ordersRouter)

@@ -8,6 +8,7 @@ from bson.objectid import ObjectId
 from pydantic import BaseModel
 from .locationIQ import *
 from .paypal import *
+from .order import *
 
 class PyObjectId(ObjectId):
     """Wrapper around `pymongo`'s `ObjectId` class for Pydantic"""

@@ -58,6 +58,12 @@ async def get_public_key(settings: Settings = Depends(get_settings)):
     
     return _keys
 
+@lru_cache
+def get_orders_service(
+    paypal: PaypalService = Depends(get_paypal_service),
+):
+    return OrdersService(paypalService=paypal)
+
 """
 @lru_cache
 def get_service(
