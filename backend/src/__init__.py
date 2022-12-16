@@ -50,3 +50,16 @@ app.openapi = custom_openapi
 from .auth import Authentication, Claims
 app.dependency_overrides[Authentication] = lambda: Claims(sub="auth0|6396209463e2aad93a9bcbec",exp=10^20,iat=1670881785,iss="https://dev-dmw70d0ct8r06evt.us.auth0.com/")
 """
+
+"""
+# Exception handlers
+from fastapi import Request
+from fastapi.responses import JSONResponse
+
+@app.exception_handler(ValueError)
+async def unicorn_exception_handler(request: Request, exc: ValueError):
+    return JSONResponse(
+        status_code=418,
+        content={"message": f"Oops! {exc.name} did something. There goes a rainbow..."},
+    )
+"""
