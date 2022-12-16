@@ -1,5 +1,6 @@
 <script>
-  import L from "leaflet";
+  // window is undefined (thanks leaflet :D)
+  //import L from "leaflet";
   import "leaflet/dist/leaflet.css";
 
   // {coordinates: [lat,long], text, open?}
@@ -8,7 +9,8 @@
   export let height = "40vh";
   export let width = undefined;
 
-  function setupMap(htmlElement) {
+  async function setupMap(htmlElement) {
+    const L = await import("leaflet");
     const map = L.map(htmlElement).setView(origin, 13);
 
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
