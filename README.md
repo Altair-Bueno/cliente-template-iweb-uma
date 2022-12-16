@@ -35,8 +35,11 @@ instrucciones detalladas sobre instalación y despliegue, visite los ficheros
 
 # Funcionalidad implementada
 
-<!--TODO -->
+- Todo lo relacionado con mapas
+- Oauth
+- Lista de logs: Por alguna razon Auth0 no devuelve los logs con la consulta,
+  con un poco más de tiempo podría haberlo extraido
 
 # Otras anotaciones
 
-<!--TODO -->
+Nada que añadir

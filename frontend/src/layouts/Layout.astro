@@ -15,10 +15,11 @@ const isLoggedIn = Astro.cookies.has(cookies.refreshToken);
 
 const home = "Index";
 const pages = [
-  { url: "/example/auth", title: "Authenticated route", requiresAuth: true },
-  { url: "/example/cloudinary", title: "Cloudinary image upload" },
-  { url: "/example/form", title: "Generated form" },
-  { url: "/example/paypal", title: "Paypal buttons" },
+  { url: "/", title: "Home", requiresAuth: false },
+  { url: "/lineas", title: "Lineas", requiresAuth: false },
+  { url: "/nombreParada", title: "Nombre parada", requiresAuth: false },
+  { url: "/buscar", title: "Buscar", requiresAuth: false },
+  { url: "/log", title: "Log", requiresAuth: true },
 ].filter((x) => implies(x.requiresAuth, isLoggedIn));
 ---
 

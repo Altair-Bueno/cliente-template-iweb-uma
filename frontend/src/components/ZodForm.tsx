@@ -11,12 +11,19 @@ interface FormProps {
   formData: any;
   scheme: any;
   name: string;
+  method?: "GET" | "POST";
 }
 
-export default function ZodForm({ formData, scheme, name }: FormProps) {
+export default function ZodForm({
+  formData,
+  scheme,
+  name,
+  method = "POST",
+}: FormProps) {
   const jsonScheme = zodToJsonSchema(scheme, name);
   return (
     <Form
+      method={method}
       schema={jsonScheme}
       validator={validator}
       formData={formData}
