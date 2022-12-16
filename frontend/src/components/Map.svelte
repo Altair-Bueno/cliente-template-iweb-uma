@@ -1,15 +1,19 @@
-<script>
+<script lang="ts">
   // window is undefined (thanks leaflet :D)
   //import L from "leaflet";
   import "leaflet/dist/leaflet.css";
 
-  // {coordinates: [lat,long], text, open?}
-  export let points = [];
-  export let origin = [0, 0];
-  export let height = "40vh";
-  export let width = undefined;
+  interface Point {
+    coordinates: [number, number];
+    text: string;
+    open: any;
+  }
+  export let points: Point[] = [];
+  export let origin: [number, number] = [0, 0];
+  export let height: undefined | string = "40vh";
+  export let width: undefined | string = undefined;
 
-  async function setupMap(htmlElement) {
+  async function setupMap(htmlElement: HTMLElement) {
     const L = await import("leaflet");
     const map = L.map(htmlElement).setView(origin, 13);
 
