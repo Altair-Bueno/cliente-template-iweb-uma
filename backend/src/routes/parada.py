@@ -2,6 +2,7 @@ from typing import List, Optional
 from fastapi import APIRouter, Depends
 
 from src.model import Parada
+from src.auth import Authentication
 
 from ..model import FilterParada
 
@@ -19,6 +20,7 @@ async def get_paradas(
     precision: float = 1,
     lon: Optional[float] = None,
     lat: Optional[float] = None,
+    auth = Depends(Authentication),
     service: ParadaService = Depends(get_parada_service)
 ):
     f = FilterParada(
@@ -34,7 +36,8 @@ async def get_paradas(
 @paradaRouter.get("/address_search", operation_id="search_by_address", response_model=List[Parada])
 async def search_by_address(
     address: str, 
-    service: ParadaService = Depends(get_parada_service)
+    service: ParadaService = Depends(get_parada_service),
+    auth = Depends(Authentication),
 
 ):
     return await service.get_paradas_by_address(address)

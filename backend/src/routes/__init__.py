@@ -28,5 +28,5 @@ async def requires_auth(auth: Claims=Depends(Authentication)):
     return "Hello world"
 """
 
-BaseRouter.include_router(ordersRouter)
+#BaseRouter.include_router(ordersRouter)
 BaseRouter.include_router(paradaRouter)

@@ -35,4 +35,5 @@ def Authentication(
         )
         return Claims(**payload)
     except Exception as e:
+        print(e)
         raise AuthenticationError(e)

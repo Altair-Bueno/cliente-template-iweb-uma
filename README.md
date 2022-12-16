@@ -2,6 +2,8 @@
 
 - Frontend: https://cliente-template-iweb-uma.vercel.app/
 - Backend: https://cliente-iweb-uma.fly.dev
+- BBDD:
+  mongodb+srv://iweb:cliente-iweb-uma-jdsauu2nodau2@cliente-iweb-uma.wpsvwmu.mongodb.net/?retryWrites=true&w=majority
 
 # Tecnologías utilizadas
 
