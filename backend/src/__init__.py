@@ -37,6 +37,7 @@ def custom_openapi():
     openapi_schema["servers"] = [
         {"url": "/", "description": "Default"},
         {"url": "http://localhost:8000", "description": "Docker compose"},
+        {"url": "https://cliente-iweb-uma.fly.dev", "description": "Fly.io"},
     ]
 
     app.openapi_schema = openapi_schema
