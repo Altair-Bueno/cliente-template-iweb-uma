@@ -64,11 +64,10 @@ def get_orders_service(
 ):
     return OrdersService(paypalService=paypal)
 
-"""
 @lru_cache
-def get_service(
-    paypal: PaypalService = Depends(get_paypal_service),
+def get_parada_service(
+    collection = Depends(get_collection),
+    # paypal: PaypalService = Depends(get_paypal_service),
     locationiq: LocationIQService = Depends(get_locationiq_service)
 ):
-    return Service(paypal=paypal,locationiq=locationiq)
-"""
+    return ParadaService(collection=collection, locationiq=locationiq)

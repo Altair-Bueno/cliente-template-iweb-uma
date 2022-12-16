@@ -9,6 +9,7 @@ from pydantic import BaseModel
 from .locationIQ import *
 from .paypal import *
 from .order import *
+from .parada import *
 
 class PyObjectId(ObjectId):
     """Wrapper around `pymongo`'s `ObjectId` class for Pydantic"""
