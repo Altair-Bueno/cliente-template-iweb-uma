@@ -1,3 +1,8 @@
+Disclaimer: URL, passwords and other sensible data committed to this project no
+longer exist
+
+---
+
 # URL de la aplicación desarrollada
 
 - Frontend: https://cliente-template-iweb-uma.vercel.app/
